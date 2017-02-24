@@ -1,0 +1,42 @@
+﻿<Page
+    x:Class="PicAutomat.SeriesView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:PicAutomat"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+     xmlns:data="using:PicAutomat"
+    mc:Ignorable="d">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+            <Grid.RowDefinitions>
+
+                <RowDefinition Height="265*"/>
+                <RowDefinition Height="174"/>
+            </Grid.RowDefinitions>
+            <StackPanel  Grid.Column="0" Grid.Row="0"  Margin="10">
+                <GridView    ItemsSource="{x:Bind CurrentPhotos}"
+    ScrollViewer.VerticalScrollBarVisibility="Visible"
+    ScrollViewer.VerticalScrollMode="Enabled" Grid.RowSpan="3" IsItemClickEnabled="True" ItemClick="GridView_ItemClick">
+                    <GridView.ItemTemplate>
+                        <DataTemplate  ScrollViewer.HorizontalScrollMode="Enabled" x:DataType="data:ViewItem">
+                            <StackPanel >
+                                <Image   Height="200" Source="{x:Bind CurrentPhoto}"/>
+                                <TextBlock Height="50" HorizontalAlignment="Center" Text="{x:Bind Name}"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </GridView.ItemTemplate>
+                </GridView>
+            </StackPanel>
+
+            <Button x:Name="btnReload" Height="110" Width="110" BorderThickness="0"  Background="Transparent"  Grid.Column="0" Grid.Row="2" HorizontalAlignment="Right" Margin="0,32,10,32" >
+                <Image x:Name="imgReloadIcon" Height="100"    Width="100" Source="Assets/repeat.png"  Grid.Column="0" Grid.Row="2"  VerticalAlignment="Center" HorizontalAlignment="Center"  />
+            </Button>
+
+            <Button x:Name="btnExit" Height="110" Width="110" BorderThickness="0"  Background="Transparent"  Grid.Column="0" Grid.Row="2" HorizontalAlignment="Left" Click="btnExit_Click" Margin="10,32,0,32" >
+                <Image x:Name="imgExitIcon" Height="100"    Width="100" Source="Assets/exit-1.png"  Grid.Column="0" Grid.Row="2"  VerticalAlignment="Center" HorizontalAlignment="Center"  />
+            </Button>
+        </Grid>
+    </Grid>
+</Page>
